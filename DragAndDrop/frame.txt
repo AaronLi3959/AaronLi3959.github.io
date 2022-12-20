@@ -1,0 +1,39 @@
+In your HTML, create a navigation menu with links to the pages you want to load and give each link a unique id attribute:
+
+<nav>
+  <ul>
+    <li><a href="#" id="link1">Page 1</a></li>
+    <li><a href="#" id="link2">Page 2</a></li>
+    <li><a href="#" id="link3">Page 3</a></li>
+  </ul>
+</nav>
+
+
+Create an iframe element in your HTML and give it an id attribute:
+<iframe id="iframe"></iframe>
+
+
+In your JavaScript, select the iframe element and the links in the navigation menu using their id attributes and store them in variables:
+
+const iframe = document.getElementById('iframe');
+const link1 = document.getElementById('link1');
+const link2 = document.getElementById('link2');
+const link3 = document.getElementById('link3');
+
+
+Use the addEventListener method to attach a click event handler to each link in the navigation menu:
+
+link1.addEventListener('click', function(event) {
+  event.preventDefault();
+  iframe.src = 'http://example.com/page1.html';
+});
+
+link2.addEventListener('click', function(event) {
+  event.preventDefault();
+  iframe.src = 'http://example.com/page2.html';
+});
+
+link3.addEventListener('click', function(event) {
+  event.preventDefault();
+  iframe.src = 'http://example.com/page3.html';
+});

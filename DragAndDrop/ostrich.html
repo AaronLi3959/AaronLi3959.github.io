@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ostrich</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="./dog.js"></script>
+</head>
+
+<body>
+
+  <!-- Add an audio element to play the music -->
+  <audio id="music" src="./ahhhh-37191.mp3"></audio>
+
+  <h1 style="text-align: center;">Give Ostrich's sound</h1>
+
+  <div style="display: flex; justify-content: center; align-items: center;">
+    <img id="background" style="width:30%" src="./ostrich.jpg" alt="Background Image">
+  </div>
+
+  <div style="display: flex; justify-content: center; align-items: center;">
+    <img id="draggable" src="./Ahhh.png" alt="Draggable Image">
+  </div>
+
+  <div class="button" style="display: flex; justify-content: center;">
+    <button id="soundEffect" onclick="soundEffect()">Sound Effect</button>
+  </div>
+
+  <script>
+
+    // Get the audio element
+    const audio = document.getElementById("music");
+
+    function soundEffect() {
+      audio.play();
+    }
+
+  </script>
+
+</body>
+
+</html>

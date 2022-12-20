@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Portfolio - Weihao Li</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="../assets/img/favicon.png" rel="icon">
+    <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=https://fonts.googleapis.com/css?family=Inconsolata:400,500,600,700|Raleway:400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="../assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="collapse navbar-collapse custom-navmenu" id="main-navbar">
+        <div class="container py-2 py-md-3">
+            <div class="row align-items-start">
+                <div class="col-md-10 d-flex">
+                    <div class="col-md-2">
+                        <a href="../index.html">Home</a>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="../about.html">About Me</a>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="../contact.html">Contact</a>
+                    </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-light custom-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Cartoon Drawing Using JS</a>
+            <a href="#" class="burger" data-bs-toggle="collapse" data-bs-target="#main-navbar">
+                <span></span>
+            </a>
+        </div>
+    </nav>
+
+    <main id="main">
+        <div class="container d-flex flex-column justify-content-center align-items-center fancybox"
+            style="height: 80vh; background-color:blueviolet;">
+            <canvas id="canvas" width="600" height="400"></canvas>
+        </div>
+    </main>
+    <script>
+        // get the canvas element and its context
+        var canvas = document.getElementById('canvas');
+        var ctx = canvas.getContext('2d');
+
+        // set the background color
+        ctx.fillStyle = 'lightblue';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        // draw the sun
+        ctx.beginPath();
+        ctx.arc(50, 50, 40, 0, 2 * Math.PI);
+        ctx.fillStyle = 'yellow';
+        ctx.fill();
+
+        // draw some clouds
+        ctx.beginPath();
+        ctx.moveTo(120, 30);
+        ctx.bezierCurveTo(130, 35, 130, 35, 140, 30);
+        ctx.bezierCurveTo(140, 35, 140, 35, 150, 30);
+        ctx.bezierCurveTo(160, 35, 170, 35, 180, 30);
+        ctx.lineTo(180, 40);
+        ctx.lineTo(120, 40);
+        ctx.lineTo(120, 30);
+        ctx.fillStyle = 'white';
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.moveTo(200, 20);
+        ctx.bezierCurveTo(210, 25, 210, 25, 220, 20);
+        ctx.bezierCurveTo(220, 25, 220, 25, 230, 20);
+        ctx.bezierCurveTo(240, 25, 250, 25, 260, 20);
+        ctx.lineTo(260, 30);
+        ctx.lineTo(200, 30);
+        ctx.lineTo(200, 20);
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.moveTo(280, 10);
+        ctx.bezierCurveTo(290, 15, 290, 15, 300, 10);
+        ctx.bezierCurveTo(300, 15, 300, 15, 310, 10);
+        ctx.bezierCurveTo(320, 15, 330, 15, 340, 10);
+        ctx.lineTo(340, 20);
+        ctx.lineTo(280, 20);
+        ctx.lineTo(280, 10);
+        ctx.fill();
+
+
+        // draw the mountains
+        ctx.beginPath();
+        ctx.moveTo(240, canvas.height - 50);
+        ctx.lineTo(290, canvas.height - 100);
+        ctx.lineTo(340, canvas.height - 50);
+        ctx.fillStyle = 'gray';
+        ctx.fill();
+
+        // draw the trees
+        ctx.beginPath();
+        ctx.moveTo(260, canvas.height - 50);
+        ctx.lineTo(280, canvas.height - 80);
+        ctx.lineTo(300, canvas.height - 50);
+        ctx.lineTo(260, canvas.height - 50);
+        ctx.fillStyle = 'darkgreen';
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.moveTo(320, canvas.height - 50);
+        ctx.lineTo(340, canvas.height - 80);
+        ctx.lineTo(360, canvas.height - 50);
+        ctx.lineTo(320, canvas.height - 50);
+        ctx.fillStyle = 'darkgreen';
+        ctx.fill();
+
+        // draw the living quarters
+        ctx.beginPath();
+        ctx.rect(420, canvas.height - 120, 100, 120);
+        ctx.fillStyle = 'brown';
+        ctx.fill();
+
+        // draw the roof
+        ctx.beginPath();
+        ctx.moveTo(420, canvas.height - 120);
+        ctx.lineTo(470, canvas.height - 180);
+        ctx.lineTo(520, canvas.height - 120);
+        ctx.fillStyle = 'SandyBrown';
+        ctx.fill();
+
+        // draw the door
+        ctx.beginPath();
+        ctx.rect(450, canvas.height - 90, 30, 60);
+        ctx.fillStyle = 'gray';
+        ctx.fill();
+
+        // draw the windows
+        ctx.beginPath();
+        ctx.rect(420, canvas.height - 70, 30, 30);
+        ctx.rect(500, canvas.height - 70, 30, 30);
+
+
+
+        // draw the ground
+        ctx.fillStyle = 'Maroon';
+        ctx.fillRect(0, canvas.height - 20, canvas.width, 50);
+
+
+        // draw the grass
+        for (var i = 0; i < canvas.width; i += 40) {
+            ctx.beginPath();
+            ctx.fillStyle = 'darkgreen';
+            ctx.moveTo(i, canvas.height - 20);
+            ctx.lineTo(i + 20, canvas.height - 30);
+            ctx.lineTo(i + 40, canvas.height - 20);
+            ctx.fill();
+        }
+
+
+
+
+        // set the font and fill style for the text
+        ctx.font = '24px sans-serif';
+        ctx.fillStyle = 'black';
+
+        // set the text alignment
+        ctx.textAlign = 'center';
+
+        // draw the text at the specified position
+        ctx.fillText('Cartoon drawing using Javascript', canvas.width / 2, 70);
+
+    </script>
+
+</body>
+
+</html>

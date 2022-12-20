@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Portfolio - Weihao Li</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+
+  <!-- Favicons -->
+  <link href="../assets/img/favicon.png" rel="icon">
+  <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css?family=https://fonts.googleapis.com/css?family=Inconsolata:400,500,600,700|Raleway:400,400i,500,500i,600,600i,700,700i"
+    rel="stylesheet">
+
+  <!-- Vendor CSS Files -->
+  <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+  <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+  <!-- Template Main CSS File -->
+  <link href="../assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+  <div class="collapse navbar-collapse custom-navmenu" id="main-navbar">
+    <div class="container py-2 py-md-3">
+      <div class="row align-items-start">
+        <div class="col-md-10 d-flex">
+          <div class="col-md-2">
+            <a href="../index.html">Home</a>
+          </div>
+          <div class="col-md-2">
+            <a href="../about.html">About Me</a>
+          </div>
+          <div class="col-md-2">
+            <a href="../contact.html">Contact</a>
+          </div>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="navbar navbar-light custom-navbar">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">Text Project</a>
+      <a href="#" class="burger" data-bs-toggle="collapse" data-bs-target="#main-navbar">
+        <span></span>
+      </a>
+    </div>
+  </nav>
+
+  <main id="main">
+    <div class="container d-flex flex-column justify-content-center align-items-center fancybox"
+      style="height: 80vh; background-color:chocolate;">
+      <div style="padding: 10px;" id="textProject" style="font-family: Georgia; font-size: 12px;">Text Project</div>
+      <div style="width: 500px; background-color:azure;">
+        <form>
+          <div id="textArea" style="padding: 10px;">
+            <label for="text">Name:</label>
+            <input type="text" name="text" id="text" onchange="change()" />
+          </div>
+          <div id="textArea" style="padding: 10px;">
+            <label for="backgroundColor">Background Color:</label>
+            <input type="color" name="backgroundColor" id="backgroundColor" value="#ffffff" onchange="change()" />
+          </div>
+          <div id="textArea" style="padding: 10px;">
+            <label for="textColor">Text Color:</label>
+            <input type="color" name="textColor" id="textColor" value="#000000" onchange="change()" />
+          </div>
+          <div id="textArea" style="padding: 10px;">
+            <label for="fontSize">Font Size:</label>
+            <input type="range" name="fontSize" id="fontSize" value="12" min="12" max="48" step="1"
+              onchange="change()" />
+          </div>
+          <div id="textArea" style="padding: 10px;">
+            <label for="fontFamily">Font Family:</label>
+            <input type="radio" name="fontFamily" id="fontFamily" value=1 onchange="change()" checked />Georgia
+            <input type="radio" name="fontFamily" id="fontFamily" value=2 onchange="change()" />Times New Roman
+            <input type="radio" name="fontFamily" id="fontFamily" value=3 onchange="change()" />Brush Script MT
+          </div>
+        </form>
+        <div id="buttonArea" style="padding: 10px;">
+          <button type="button" value="reset" style="background-color: black; color:azure; width: 100px; height: 30px"
+            onclick="reset()">Reset</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Vendor JS Files -->
+  <script src="../assets/vendor/aos/aos.js"></script>
+  <script src="../assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/vendor/swiper/swiper-bundle.min.js"></script>
+  <!-- Template Main JS File -->
+  <script src="../assets/js/main.js"></script>
+  <script>
+    function reset() {
+      document.getElementById("text").value = "";
+      document.getElementById("backgroundColor").value = "#ffffff";
+      document.getElementById("textColor").value = "#000000";
+      document.getElementById("fontSize").value = "12px";
+      document.getElementById("fontFamily").value = "Georgia";
+      change();
+      document.getElementById("textProject").innerHTML = "Text Project";
+    }
+
+    function change() {
+      var text = document.getElementById("text").value;
+      var backgroundColor = document.getElementById("backgroundColor").value;
+      var textColor = document.getElementById("textColor").value;
+      var fontSize = document.getElementById("fontSize").value + 'px';
+      var fontFamily = document.querySelector('input[name="fontFamily"]:checked').value;
+      if (text == "") {
+        text = "Text Project";
+      }
+      document.getElementById("textProject").innerHTML = text;
+      document.getElementById("textProject").style.backgroundColor = backgroundColor;
+      document.getElementById("textProject").style.color = textColor;
+      document.getElementById("textProject").style.fontSize = fontSize;
+      if (fontFamily == 1) {
+        document.getElementById("textProject").style.fontFamily = "Georgia";
+      } else if (fontFamily == 2) {
+        document.getElementById("textProject").style.fontFamily = "Times New Roman";
+      } else if (fontFamily == 3) {
+        document.getElementById("textProject").style.fontFamily = "Brush Script MT";
+      }
+    }
+  </script>
+
+</html>

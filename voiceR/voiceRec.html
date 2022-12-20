@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+    <title>Portfolio - Weihao Li</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+    <!-- Favicons -->
+    <link href="../assets/img/favicon.png" rel="icon">
+    <link href="../assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=https://fonts.googleapis.com/css?family=Inconsolata:400,500,600,700|Raleway:400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="../assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="../assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="../assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Template Main CSS File -->
+    <link href="../assets/css/style.css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="collapse navbar-collapse custom-navmenu" id="main-navbar">
+        <div class="container py-2 py-md-3">
+            <div class="row align-items-start">
+                <div class="col-md-10 d-flex">
+                    <div class="col-md-2">
+                        <a href="../index.html">Home</a>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="../about.html">About Me</a>
+                    </div>
+                    <div class="col-md-2">
+                        <a href="../contact.html">Contact</a>
+                    </div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-light custom-navbar">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">Voice Recognition</a>
+            <a href="#" class="burger" data-bs-toggle="collapse" data-bs-target="#main-navbar">
+                <span></span>
+            </a>
+        </div>
+    </nav>
+
+    <main id="main">
+        <div class="container d-flex flex-column justify-content-center align-items-center fancybox"
+            style="height: 80vh; background-color: cadetblue;">
+            <canvas id="canvas" width="600" height="600"></canvas>
+            <button class="btn btn-primary" id="speakButton" value="Speak">Speak</button>
+            </br>
+
+            <p>Say "color _____" to change the color of the circle. For example "color blue" to make the circle
+                blue.
+            </p>
+            <p>Say "size _____" to change the size of the circle. For example "size 50" to make the circle with a
+                diameter of 50.</p>
+
+            <script>
+                const canvas = document.getElementById('canvas');
+                const ctx = canvas.getContext('2d');
+                let color = 'black';
+                let size = 25;
+
+                function drawCircle() {
+                    ctx.fillStyle = color;
+                    ctx.beginPath();
+                    ctx.arc(300, 300, size, 0, 2 * Math.PI);
+                    ctx.fill();
+                }
+
+                // Initial draw of the circle
+                drawCircle();
+
+                const speakButton = document.getElementById('speakButton');
+                speakButton.addEventListener('click', () => {
+                    if (speakButton.value === 'Speak') {
+                        // Start listening for speech input
+                        startListening();
+                        speakButton.value = 'Stop';
+                    } else {
+                        // Stop listening for speech input
+                        stopListening();
+                        speakButton.value = 'Speak';
+                    }
+                });
+
+                function startListening() {
+                    window.SpeechRecognition = window.webkitSpeechRecognition || window.speechRecognition;
+                    const recognition = new SpeechRecognition();
+                    recognition.interimResults = false;
+                    recognition.maxAlternatives = 1;
+
+                    recognition.start();
+
+                    recognition.addEventListener('result', (event) => {
+                        const speechResult = event.results[0][0].transcript;
+                        console.log(speechResult);
+                        handleSpeechInput(speechResult);
+                    });
+                }
+
+                function stopListening() {
+                    recognition.stop();
+                }
+
+                function handleSpeechInput(input) {
+                    if (input.startsWith('color')) {
+                        const newColor = input.split(' ')[1];
+                        color = newColor;
+                        drawCircle();
+                    } else if (input.startsWith('size')) {
+                        const newSize = parseInt(input.split(' ')[1]);
+                        if (isNaN(newSize)) {
+                            console.log('Invalid size');
+                            return;
+                        }
+                        if (newSize > 300) {
+                            console.log('Size limit is 300');
+                            return;
+                        }
+                        if (newSize < 1) {
+                            console.log('Minimum size is 1');
+                            return;
+                        }
+                        size = newSize / 2; // Divide by 2 to convert diameter to radius
+                        drawCircle();
+                    } else if (input.startsWith('help')) {
+                        console.log('Say "color" followed by a color, to set the circle color. Say "size" followed by a number from 1 to 300, to set the diameter of the circle.');
+                    }
+                }
+            </script>
+
+        </div>
+    </main>
+
+</body>
+
+</html>
